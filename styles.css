@@ -8,7 +8,7 @@ body{
 
     border:solid;
     background-color: black;
-    width: 460px;
+    width: 455px;
     height:630px;
     border-radius: 8px;
     display: flex;
@@ -18,46 +18,46 @@ body{
 }
 .screen{
     background-color: antiquewhite;
-    width:400px;
-    height:140px;
+    width:430px;
+    height:120px;
     margin:20px 10px 0px 10px;
-    border-radius: 3px;
+    border-radius: 4px;
 }
 button:hover{
     background-color:rgb(216, 215, 215);
 }
 .buttons{
     background-color: purple;
-    width:450px;
-    height:auto;
+    width:445px;
+    height:460px;
     display: flex;
     flex-wrap: wrap;
-    border-radius: 4px;
+    border-radius: 6px;
 }
 .square{
     width:95px;
     height:80px;
     border-radius:6px;
     margin:3px 0px;
-    
+    font-size: 18px;
 }
 .rectangle{
     padding:15px 0px;
-    width: 210px;
+    width: 215px;
     height:80px;
-    font-size: 16px;
+    font-size: 20px;
     border-radius: 6px;
+    align-items: center;
     font-family: 'Roboto', sans-serif;
 }
 .bottom{
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-around; */
 }
 .top{
     display:flex;
-    justify-content: space-between;
-    /* background-color: blue; */
+    justify-content: space-evenly;
+    gap:2px;
     padding:10px;
     width:450px;
 }
@@ -75,4 +75,11 @@ button:hover{
     min-height: 500px;
     padding: 10px;
     margin-top: 50px;
+}
+
+.screen{
+    font-size: 90px;
+    justify-content: end;
+    align-items: center;
+    display: flex;
 }

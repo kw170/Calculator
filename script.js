@@ -1,6 +1,6 @@
-let firstNum
-let secondNum
-let operator
+let firstNum = ""
+let secondNum = ""
+let operator = ""
 
 function add(a, b){
     return a + b
@@ -32,3 +32,19 @@ function operate(operand, first, second){
         divide(first, second)
     }
 }
+
+
+let number = document.querySelectorAll('.number')
+let screen = document.querySelector('.screen')
+console.log(screen.textContent)
+
+number.forEach((button) =>{
+    button.addEventListener('click', ()=>{
+        if(screen.textContent === "0"){
+            screen.textContent = button.value
+        }
+        else{
+            screen.textContent += button.value
+        }
+    })
+})
