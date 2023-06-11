@@ -1,10 +1,12 @@
 let firstNum = ""
 let secondNum = ""
 let operator = ""
-let displayValue = "0"
+let displayValue = ""
 let counter = 0
+let result = ""
 
 function add(a, b){
+    console.log("second step")
     return a + b
 }
 
@@ -13,25 +15,32 @@ function subtract(a, b){
 }
 
 function multiply(a, b){
+    if(a * b > 9999999999999){
+        return "TOO LARGE"
+    }
     return a * b
 }
 
 function divide(a, b){
-    return a / b
+    if(b == 0){
+        return "ERROR"
+    }
+    return Math.round((a / b) * 1000) / 1000
 }
 
 function operate(operand, first, second){
     if(operand === "+"){
-        add(first, second)
+        console.log("first step")
+        return add(first, second)
     }
     else if(operand === "-"){
-        subtract(first, second)
+        return subtract(first, second)
     }
     else if(operand === "*"){
-        multiply(first, second)
+        return multiply(first, second)
     }
-    else if(operand === "/"){
-        divide(first, second)
+    else if(operand === "÷"){
+        return divide(first, second)
     }
 }
 
@@ -43,7 +52,7 @@ let mainScreen = document.querySelector('.mainScreen')
 //and a variable stores the value
 number.forEach((button) =>{
     button.addEventListener('click', ()=>{
-        if(displayValue === "0" && counter < 1){
+        if(displayValue === "" && counter < 1){
             mainScreen.textContent = button.value
             displayValue = button.value
             if(firstNum !== ""){
@@ -52,7 +61,7 @@ number.forEach((button) =>{
         }
 
         else{
-            if(parseInt(displayValue) > 1000000000){
+            if(parseInt(displayValue) > 1000000000000){
                 //Do nothing
             }
             else{
@@ -68,10 +77,53 @@ number.forEach((button) =>{
 let operand = document.querySelectorAll('.operator')
 operand.forEach((button) =>{
     button.addEventListener('click', () =>{
-        firstNum = displayValue
-        console.log(firstNum)
-        operator = button.textContent
-        displayValue = "0"
+        firstNum = parseInt(displayValue)
+        if(button.textContent === "x"){
+            operator = "*"
+        }
+        else{
+            operator = button.textContent
+        }
+        displayValue = ""
         counter = 0
     })
+})
+
+//to do equals sign
+//bullet points of #six
+let equals = document.querySelector('#equals')
+equals.addEventListener('click',()=>{
+    if(firstNum !== "" && displayValue !== ""){
+        secondNum = parseInt(displayValue)
+        result = operate(operator,firstNum, secondNum)
+        mainScreen.textContent = result
+        firstNum = result
+    }
+})
+
+
+//mini upper screen works
+let upperScreen = document.querySelector('.upperScreen')
+operand.forEach((button) =>{
+    button.addEventListener('click', () =>{
+        upperScreen.textContent = firstNum + " " + operator
+    })
+})
+
+equals.addEventListener('click',()=>{
+    upperScreen.textContent += " " + secondNum + " ="
+})
+
+
+//clear button resets calculator
+let clear = document.querySelector('#clear')
+clear.addEventListener('click', () =>{
+    firstNum = ""
+    secondNum = ""
+    operator = ""
+    displayValue = ""
+    counter = 0
+    result = ""
+    upperScreen.textContent = ""
+    mainScreen.textContent = 0
 })

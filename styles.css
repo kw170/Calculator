@@ -79,10 +79,11 @@ button:hover{
 
 .mainScreen{
     height:90px;
-    font-size: 75px;
+    font-size: 60px;
     justify-content: end;
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
     padding-right: 4px;
     /* background-color: green; */
 }
