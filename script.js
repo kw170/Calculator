@@ -132,8 +132,6 @@ equals.addEventListener('click',()=>{
         }
         if(!hasEqual){
             upperScreen.textContent += " " + secondNum + " ="
-            console.log(displayValue)
-            console.log("1")
         }
     }
 
@@ -179,7 +177,6 @@ decimal.addEventListener('click', ()=>{
 let backspace = document.querySelector('#delete')
 backspace.addEventListener('click', ()=>{
     //completely done basically a clear buttom
-    console.log(displayValue)
     if(firstNum !== "" && secondNum !== "" && operator !== ""){
         firstNum = ""
         secondNum = ""
@@ -200,4 +197,14 @@ backspace.addEventListener('click', ()=>{
     displayValue = Math.floor(displayValue / 10)
     mainScreen.textContent = displayValue
     }
+})
+let button = document.querySelectorAll('button')
+//allow for keyboard support
+document.body.addEventListener('keyup',(ev)=>{
+    console.log(ev.key)
+    button.forEach(buttons =>{
+        if(ev.key == buttons.value){
+            buttons.click()
+        }
+    })
 })
