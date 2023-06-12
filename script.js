@@ -35,7 +35,6 @@ function divide(a, b){
 
 function operate(operand, first, second){
     if(operand === "+"){
-        console.log("first step")
         return add(first, second)
     }
     else if(operand === "-"){
@@ -64,7 +63,6 @@ number.forEach((button) =>{
                 counter++
             }   
         }
-
         else{
             if(parseFloat(displayValue) > 1000000000000){
                 //Do nothing
@@ -155,9 +153,44 @@ decimal.addEventListener('click', ()=>{
         displayValue += "."
         mainScreen.textContent += "."
     }
-    console.log(displayValue)
 })
 
 //second operation stuff
+operand.forEach((button) =>{
+    button.addEventListener('click', () =>{
+        if(secondNum !== ""){
+            secondNum = parseFloat(displayValue)
+            firstNum = operate(operator,firstNum, secondNum)
+            upperScreen.textContent += button.value
+            // console.log(upperScreen.textContent)
+            // upperScreen = firstNum
+        }
+    })
+})
 
 //delete button
+let backspace = document.querySelector('#delete')
+backspace.addEventListener('click', ()=>{
+    //completely done basically a clear buttom
+    console.log(displayValue)
+    if(firstNum !== "" && secondNum !== "" && operator !== ""){
+        firstNum = ""
+        secondNum = ""
+        operator = ""
+        displayValue = ""
+        counter = 0
+        result = ""
+        upperScreen.textContent = ""
+        mainScreen.textContent = 0
+    }
+    //deleting the second num
+    else if(parseFloat(displayValue) < 10){
+        displayValue = ""
+        mainScreen.textContent = "0"
+        counter = 0
+    }
+    else{
+    displayValue = Math.floor(displayValue / 10)
+    mainScreen.textContent = displayValue
+    }
+})
