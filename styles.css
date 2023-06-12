@@ -8,8 +8,8 @@ body{
 
     border:solid;
     background-color: black;
-    width: 455px;
-    height:630px;
+    width: 465px;
+    height:640px;
     border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
@@ -33,6 +33,7 @@ button:hover{
     display: flex;
     flex-wrap: wrap;
     border-radius: 6px;
+    padding-right:5px;
 }
 .square{
     width:95px;
@@ -43,28 +44,29 @@ button:hover{
 }
 .rectangle{
     padding:15px 0px;
-    width: 215px;
+    width: 205px;
     height:80px;
     font-size: 20px;
     border-radius: 6px;
     align-items: center;
     font-family: 'Roboto', sans-serif;
+    margin:0px
 }
 .bottom{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 .top{
     display:flex;
-    justify-content: space-evenly;
-    gap:2px;
-    padding:10px;
+    justify-content:center;
+    gap:20px;
+    align-items: center;
     width:450px;
 }
 .row{
     display: flex;
     justify-content: space-around;
-    /* background-color:green; */
     width:450px;
 }
 .container{
@@ -85,11 +87,9 @@ button:hover{
     display: flex;
     flex-wrap: wrap;
     padding-right: 4px;
-    /* background-color: green; */
 }
 
 .upperScreen{
-    /* background-color:blue; */
     height:40px;
     display: flex;
     align-items: center;

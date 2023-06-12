@@ -80,18 +80,27 @@ number.forEach((button) =>{
 let operand = document.querySelectorAll('.operator')
 operand.forEach((button) =>{
     button.addEventListener('click', () =>{
-        firstNum = parseFloat(displayValue)
-        if(button.textContent === "x"){
-            operator = "*"
+        if(upperScreen.textContent == ""){
+            firstNum = parseFloat(displayValue)
+            if(button.textContent === "x"){
+                operator = "*"
+            }
+            else{
+                operator = button.textContent
+            }
+            displayValue = ""
+            counter = 0
         }
-        else{
-            operator = button.textContent
-        }
-        displayValue = ""
-        counter = 0
+        else {
+            secondNum = parseFloat(displayValue);
+            firstNum = operate(operator, firstNum, secondNum);
+            operator = button.textContent;
+            displayValue = "";
+            mainScreen.textContent = "";
+            upperScreen.textContent = firstNum + " " + operator;
+          }
     })
 })
-
 //to do equals sign
 //bullet points of #six
 let equals = document.querySelector('#equals')
@@ -114,9 +123,20 @@ operand.forEach((button) =>{
 })
 
 equals.addEventListener('click',()=>{
-    if(firstNum !== ""){
-        upperScreen.textContent += " " + secondNum + " ="
+    if(firstNum !== "" && operator !== "" && displayValue !== ""){
+        let hasEqual = false
+        for(let i = 0; i < upperScreen.textContent.length; i++){
+            if(upperScreen.textContent.charAt(i) == "="){
+                return true
+            }
+        }
+        if(!hasEqual){
+            upperScreen.textContent += " " + secondNum + " ="
+            console.log(displayValue)
+            console.log("1")
+        }
     }
+
 })
 
 
@@ -153,19 +173,6 @@ decimal.addEventListener('click', ()=>{
         displayValue += "."
         mainScreen.textContent += "."
     }
-})
-
-//second operation stuff
-operand.forEach((button) =>{
-    button.addEventListener('click', () =>{
-        if(secondNum !== ""){
-            secondNum = parseFloat(displayValue)
-            firstNum = operate(operator,firstNum, secondNum)
-            upperScreen.textContent += button.value
-            // console.log(upperScreen.textContent)
-            // upperScreen = firstNum
-        }
-    })
 })
 
 //delete button
