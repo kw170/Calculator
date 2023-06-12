@@ -6,7 +6,9 @@ let counter = 0
 let result = ""
 
 function add(a, b){
-    console.log("second step")
+    if(a + b > 9999999999999){
+        return "TOO LARGE"
+    }
     return a + b
 }
 
@@ -22,6 +24,9 @@ function multiply(a, b){
 }
 
 function divide(a, b){
+    if(a / b > 9999999999999){
+        return "TOO LARGE"
+    }
     if(b == 0){
         return "ERROR"
     }
@@ -61,7 +66,7 @@ number.forEach((button) =>{
         }
 
         else{
-            if(parseInt(displayValue) > 1000000000000){
+            if(parseFloat(displayValue) > 1000000000000){
                 //Do nothing
             }
             else{
@@ -77,7 +82,7 @@ number.forEach((button) =>{
 let operand = document.querySelectorAll('.operator')
 operand.forEach((button) =>{
     button.addEventListener('click', () =>{
-        firstNum = parseInt(displayValue)
+        firstNum = parseFloat(displayValue)
         if(button.textContent === "x"){
             operator = "*"
         }
@@ -94,7 +99,7 @@ operand.forEach((button) =>{
 let equals = document.querySelector('#equals')
 equals.addEventListener('click',()=>{
     if(firstNum !== "" && displayValue !== ""){
-        secondNum = parseInt(displayValue)
+        secondNum = parseFloat(displayValue)
         result = operate(operator,firstNum, secondNum)
         mainScreen.textContent = result
         firstNum = result
@@ -111,7 +116,9 @@ operand.forEach((button) =>{
 })
 
 equals.addEventListener('click',()=>{
-    upperScreen.textContent += " " + secondNum + " ="
+    if(firstNum !== ""){
+        upperScreen.textContent += " " + secondNum + " ="
+    }
 })
 
 
@@ -127,3 +134,30 @@ clear.addEventListener('click', () =>{
     upperScreen.textContent = ""
     mainScreen.textContent = 0
 })
+
+//decimals
+let decimal = document.querySelector('#decimal')
+decimal.addEventListener('click', ()=>{
+    let containsDecimal = false
+    if(displayValue === ""){
+        displayValue = "0."
+        mainScreen.textContent = "0."
+    }
+        for(let i = 0; i < displayValue.length; i++){
+            if(displayValue.charAt(i) === "."){
+                containsDecimal = true
+            }
+        }
+    if(containsDecimal){
+
+    }
+    else{
+        displayValue += "."
+        mainScreen.textContent += "."
+    }
+    console.log(displayValue)
+})
+
+//second operation stuff
+
+//delete button
